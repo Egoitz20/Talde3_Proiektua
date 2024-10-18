@@ -1,0 +1,14 @@
+package App;
+
+import Funciones.Logo;
+import Funciones.Login;
+
+public class index {
+
+	public static void main(String[] args) {
+		Funciones func_logo = new Logo();
+		
+		
+	}
+
+}

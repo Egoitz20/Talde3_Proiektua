@@ -1,0 +1,16 @@
+package Funciones;
+
+public class Login {
+
+	public static void login_vista() {
+		System.out.println("");
+		System.out.println("");
+		System.out.print("Usuario: ");
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

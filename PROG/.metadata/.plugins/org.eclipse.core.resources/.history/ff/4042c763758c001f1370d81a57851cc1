@@ -1,0 +1,13 @@
+package App;
+
+import Funciones;
+
+public class index {
+
+	public static void main(String[] args) {
+		Logo func_logo = new Logo();
+		
+		
+	}
+
+}
