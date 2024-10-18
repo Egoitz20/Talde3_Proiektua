@@ -97,6 +97,7 @@ public class Logo {
             }
 
             System.out.println();
+            System.out.println();
         }
 	}
 }
