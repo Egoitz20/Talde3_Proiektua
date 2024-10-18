@@ -1,3 +1,4 @@
 mkdir out
 javac -d out src/App/*.java src/Funciones/*.java
 java -cp out App.index
+.
