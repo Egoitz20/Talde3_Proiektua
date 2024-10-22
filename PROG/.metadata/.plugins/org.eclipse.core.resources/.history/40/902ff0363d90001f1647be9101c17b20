@@ -1,0 +1,59 @@
+package App;
+
+import Funciones.Logo;
+import Funciones.MenuP;
+import Funciones.Login;
+import Funciones.Kontsulta;
+import Funciones.Clear;
+import java.util.Scanner;
+
+public class index {
+
+    public static void main(String[] args) {
+        Logo func_logo = new Logo();
+        Login func_login = new Login();
+        Clear func_clear = new Clear();
+        Kontsulta func_kontsulta = new Kontsulta();
+        MenuP func_menup = new MenuP();
+        Scanner scanner = new Scanner(System.in);
+        
+        boolean login = false;
+        boolean logoutConfirmed = false;
+        
+        while (true) {  // Bucle principal
+            func_clear.clear();
+            
+            boolean login_m = false;  // Mensaje de error si el login falla
+            
+            while (!login) {  // Bucle de inicio de sesión
+                func_clear.clear();
+                func_logo.logo();
+                
+                if (login_m) {
+                    System.out.println("Erabiltzailea edo pasahitza gaizki dago");
+                    System.out.println();
+                }
+                
+                if(logoutConfirmed) {
+                    System.out.println("Saioa itxi da.");
+                    System.out.println();
+                }
+                
+                logoutConfirmed = false;
+                
+                login = func_login.login();  // Lógica para login
+                
+                if (!login) {
+                    login_m = true;  // Mostrar mensaje de error en caso de fallo
+                }
+            }
+            
+            func_menup.menup();  // Llamar al menú
+
+            // Después de cerrar sesión, resetear el estado
+            login = false;  // Esto asegura que se requiera volver a iniciar sesión
+        }
+    }
+}
+
+

@@ -1,0 +1,56 @@
+package App;
+
+// Todas las clases que emos creado con funciones las importamos para poder usarlas en este archivo
+import Funciones.Logo;
+import Funciones.Login;
+import Funciones.Kontsulta;
+import Funciones.Clear;
+import java.util.Scanner;
+
+public class index {
+
+    public static void main(String[] args) {
+    	// Al importar una clase se tiene que crear una variable de esa clase para poder invocar la función
+        Logo func_logo = new Logo();
+        Login func_login = new Login();
+        Clear func_clear = new Clear();
+        Kontsulta func_kontsulta = new Kontsulta();
+        MenuP func_menup = new MenuP();
+        Scanner scanner = new Scanner(System.in);
+        
+        boolean login = false;	
+        boolean logout = false;		
+        
+        while(true) {	// Para que al cerrar sesion vuelva a este punto para pedirte usuario y contraseña otra vez
+        	func_clear.clear();
+      
+        	boolean login_m = false; // Login_m es una variable para que aparezca un mensaje cuando sea true 
+        	
+	        while (!login) {	// Mientras login sea false se repetira (Cuando la contraseña o el usuario es erroneo la variable sigue siendo false y se repite, cuando la contraseña y el usuario estan bien escritos es true y acaba el bucle )
+	        	
+	        	func_clear.clear();		// Limpiar la pantalla del cmd o shell
+	            func_logo.logo();		// Aparecer logo
+	            
+	            if(logout == true) {		// Si se cierra sesion 
+	            	System.out.println("Saioa itxi da");
+	            	System.out.println();
+	            }
+	            
+	        	if(login_m == true) {
+	        		System.out.println("Erabiltzailea edo pasahitza gaizki dago");
+	        		System.out.println();
+	        	}
+	        	
+	            login = func_login.login(); 
+	            
+	            if(login == false) {
+	            	login_m = true;
+	            	logout = false;
+	            }
+	            
+	            MenuP()
+	        } 
+        }
+    }
+}
+

@@ -1,0 +1,90 @@
+package Funciones;
+
+import javax.swing.*;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Login {
+    private static boolean login = false; 	// Valor inicial de la variable login es "false"
+
+    public static boolean login() {		// Funcion que solo puede devolve true o false
+        Scanner scanner = new Scanner(System.in);		
+        JPasswordField passwordField = new JPasswordField();	// Clase importada que se usa para recoger contraseñas
+        
+        try {
+	        FileReader fr = new FileReader("DB/ERABILTZAILEAK.txt");
+	        BufferedReader br = new BufferedReader(fr);
+	        
+	        String lerroa;
+	        
+	        boolean primeraLinea = true;
+
+            while ((lerroa = br.readLine()) != null) {
+                if (primeraLinea) {
+                    primeraLinea = false;
+                    continue;
+                }
+	   
+	        	String[] lerroZatiak = lerroa.split("\t");
+	        	
+	        	String id = lerroZatiak[0];
+	        	String erabiltzailea = lerroZatiak[1];
+	        	String pasahitza = lerroZatiak[2];
+	        	
+	        	System.out.println("Id: " + id);
+	        	System.out.println("Erabiltzaileak: " + erabiltzailea);
+	        	System.out.println("Pasahitzak: " + pasahitza);
+	        	
+	        }
+	        
+	        br.close();
+	        fr.close();
+            
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Errorea: Fitxategia ezin da aurkitu.");
+    	} catch (IOException e) {
+    		System.out.println("Errorea: Fitxategia irakurtzean arazo bat gertatu da.");
+    	}
+        
+
+    }
+    
+    private static boolean logout = false; 
+    
+    public static boolean logout() {
+        Scanner scanner = new Scanner(System.in);	
+        Clear func_clear = new Clear();
+        
+    	boolean logout_m = false;
+    	String saiBE = " ";
+    	
+    	while(!saiBE.equals("bai") && !saiBE.equals("ez")) {
+        	
+    		func_clear.clear();
+    		
+    		if(logout_m == true) {
+    			System.out.println("Ez da erantzun egokia idatzi berriro");
+    			System.out.println();
+    		}
+    		
+    		System.out.println("Saioa ixti nahi duzu? (bai/ez)");
+        	saiBE = scanner.nextLine();
+        	
+        	saiBE= saiBE.toLowerCase();
+        	
+        	if(saiBE.equals("bai")) {
+        		logout = true;
+        	}else if(saiBE.equals("ez")) {
+        		logout = false;
+        	}else {
+        		logout_m = true;
+        	}
+    	}
+    	
+    	return logout;
+    }
+}

@@ -1,8 +1,9 @@
 package App;
 
 import Funciones.Logo;
+import Funciones.MenuP;
+import Kontsultak.Kontsulta;
 import Funciones.Login;
-import Funciones.Kontsulta;
 import Funciones.Clear;
 import java.util.Scanner;
 
@@ -13,80 +14,38 @@ public class index {
         Login func_login = new Login();
         Clear func_clear = new Clear();
         Kontsulta func_kontsulta = new Kontsulta();
+        MenuP func_menup = new MenuP();
         Scanner scanner = new Scanner(System.in);
         
         boolean login = false;
-        boolean logout = false;
         
-        while(true) {
-        	func_clear.clear();
-      
-        	boolean login_m = false;
-        	
-	        while (!login) {
-	        	
-	        	func_clear.clear();
-	            func_logo.logo();
-	            
-	            if(logout == true) {
-	            	System.out.println("Saioa itxi da");
-	            	System.out.println();
-	            }
-	            
-	        	if(login_m == true) {
-	        		System.out.println("Erabiltzailea edo pasahitza gaizki dago");
-	        		System.out.println();
-	        	}
-	            login = func_login.login(); 
-	            if(login == false) {
-	            	login_m = true;
-	            	logout = false;
-	            }
-	        }
-	
-	        String menu = "";
-	
-	        boolean m_exist = false;
-	        
-	        while (!menu.equals("4")) { 
-	            func_clear.clear();
-	            func_logo.logo();
-	            
-	            System.out.println("MENU");
-	            System.out.println("");
-	            System.out.println("1) Langileak");
-	            System.out.println("2) Bezeroak");
-	            System.out.println("3) Kontsulta");
-	            System.out.println("4) Saioa itxi");
-	            System.out.println("(1, 2, 3 edo 4)");
-	            
-	            if(m_exist == true) {
-	            	System.out.println();
-	            	System.out.println("Ez da existitzen aukera hau sartu beste bat: ");
-	            }
-	            
-	            menu = scanner.nextLine();
-	            
-	            switch (menu) {
-	                case "1":
-	                    func_kontsulta.Langileak();
-	                    break;
-	                case "2":
-	                    func_kontsulta.Bezeroak();
-	                    break;
-	                case "3":
-	                    func_kontsulta.Fitxategiak();
-	                    break;
-	                case "4":
-	                    login = false;
-	                    logout = true;
-	                    break;
-	                default:
-	                    m_exist = true;
-	                    break;
-	            }
-	        }
+        while (true) {  // Bucle principal
+            func_clear.clear();
+            
+            boolean login_m = false;  // Mensaje de error si el login falla
+            
+            while (!login) {  // Bucle de inicio de sesión
+                func_clear.clear();
+                func_logo.logo();
+                
+                if (login_m) {
+                    System.out.println("Erabiltzailea edo pasahitza gaizki dago");
+                    System.out.println();
+                }
+                
+                login = func_login.login();  // Lógica para login
+                
+                if (!login) {
+                    login_m = true;  // Mostrar mensaje de error en caso de fallo
+                }
+            }
+            
+            func_menup.menup();  // Llamar al menú
+
+            // Después de cerrar sesión, resetear el estado
+            login = false;  // Esto asegura que se requiera volver a iniciar sesión
         }
     }
 }
+
 
