@@ -1,5 +1,6 @@
 ID	ERABILTZAILEA	PASAHITZA
-1	Asierp	1
-2	Asierl	2
-3	Aimar	3
-4	Egoitz	4
+1	Asierp	admin
+2	Asierl	admin
+3	Aimar	admin
+4	Egoitz	admin
+5	admin	admin

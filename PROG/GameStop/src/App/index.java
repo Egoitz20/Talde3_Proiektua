@@ -17,33 +17,26 @@ public class index {
         MenuP func_menup = new MenuP();
         Scanner scanner = new Scanner(System.in);
         
-        boolean login = false;
-        
         while (true) {  // Bucle principal
             func_clear.clear();
             
             boolean login_m = false;  // Mensaje de error si el login falla
             
-            while (!login) {  // Bucle de inicio de sesión
+            while (!func_login.isLoggedIn()) {  // Bucle de inicio de sesión
                 func_clear.clear();
                 func_logo.logo();
                 
-                if (login_m) {
+                if (login_m) { // Si las credenciales del inicio de sesion no son correctas sale el mensaje
                     System.out.println("Erabiltzailea edo pasahitza gaizki dago");
                     System.out.println();
                 }
                 
-                login = func_login.login();  // Lógica para login
-                
-                if (!login) {
-                    login_m = true;  // Mostrar mensaje de error en caso de fallo
-                }
+                login_m = !func_login.login();  // Lógica para login
             }
             
-            func_menup.menup();  // Llamar al menú
-
-            // Después de cerrar sesión, resetear el estado
-            login = false;  // Esto asegura que se requiera volver a iniciar sesión
+            func_menup.menup(func_login);  // Llamar al menú
+            
+            System.out.println("Saioa ondo itxi da.");
         }
     }
 }

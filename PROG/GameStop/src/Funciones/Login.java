@@ -72,30 +72,36 @@ public class Login {
 
     
     
-    public static boolean logout() {
+    public boolean logout() {
         Scanner scanner = new Scanner(System.in);	
         Clear func_clear = new Clear();
         
-    	boolean logoutConfirmed = false;
-    	String saiBE = " ";
+    	boolean logoutConfirmed = false;	// Variable para saber si se ha cerrado sesion
+    	String saiBE = "";	// Variable para confirmar si el usuario quiere cerrar sesion
     	
-    	while(!saiBE.equals("bai") && !saiBE.equals("ez")) {
+    	while (!saiBE.equals("bai") && !saiBE.equals("ez")) {
         	func_clear.clear();
     		
-    		System.out.println("Saioa itxi nahi duzu? (bai/ez)");
-        	saiBE = scanner.nextLine().toLowerCase();
+    		System.out.println("Saioa itxi nahi duzu? (bai/ez)");	// Se guarda si el usuario quiere cerrar sesion
+        	saiBE = scanner.nextLine().trim().toLowerCase();
         	
-        	if(saiBE.equals("bai")) {
+        	if (saiBE.equals("bai")) {	// Si es "bai" se cierra sesion
         		logoutConfirmed = true;
-        		login = false;
-        	} else if(saiBE.equals("ez")) {
+        		login = false;  // Actualizamos el estado de login a false
+        	} else if (saiBE.equals("ez")) {	// Si es "ez" no se cierra la sesion
         		logoutConfirmed = false;
         	} else {
-        		System.out.println("Ez da erantzun egokia idatzi berriro.");
-        		System.out.println();
+        		System.out.println("Ez da erantzun egokia idatzi berriro.");	// Si escribe algo que no sea "ez" o "bai" sale el mensaje
+        		return logout();
         	}
     	}
     	
-    	return logoutConfirmed; // Devuelve si se ha confirmado el logout
+    	return logoutConfirmed;
+    }
+
+    // Método para verificar si el usuario está logueado
+    public boolean isLoggedIn() {
+        return login;  // Método para verificar si el usuario está logueado
     }
 }
+
