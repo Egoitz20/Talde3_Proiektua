@@ -158,7 +158,8 @@ public class Bezeroak {
 	
 	public static void FakturaSortu() {		// Funcion para crear una factura de los clientes
         Scanner scanner = new Scanner(System.in);
-		DecimalFormat df = new DecimalFormat("#.##");	// Funcion para indicar el formato de la variable "double"
+        Logo func_logo = new Logo();
+        DecimalFormat df = new DecimalFormat("#.##");	// Funcion para indicar el formato de la variable "double"
         
         System.out.println("Sartu bezero baten id-a: ");
         String InBezeroId = scanner.nextLine();
@@ -166,8 +167,6 @@ public class Bezeroak {
         
         // Creamos un HashMap para asociar IDs de pedidos con sus lineas de pedidos
         HashMap<String, String> idPedidoCliente = new HashMap<>();
-        
-        
         
         try {
             // Leemos primero el archivo de pedidos y lo almacenamos en el HashMap
@@ -203,47 +202,48 @@ public class Bezeroak {
             FileReader frl = new FileReader("DB/ESKARI_LERRO.txt");
             BufferedReader brl = new BufferedReader(frl);
 
-            String lerroaL;
-            boolean primeraLineaL = true;
-            boolean encontrado = false;
-            double TotalPrecio = 0.0;
+            String lerroaL;		// Variable para saber si hay primera linea
+            boolean primeraLineaL = true;	// Variable para saber si hay primera linea
+            boolean encontrado = false;		// Si encuentra el id del cliente sera true
+            double TotalPrecio = 0.0;	// Variable del precio total 
+            
             StringBuilder contenido_txt = new StringBuilder();
             
-            while ((lerroaL = brl.readLine()) != null) {
+            while ((lerroaL = brl.readLine()) != null) {	// El bucle acaba cuando a leido todo el .txt
                 if (primeraLineaL) {
                     primeraLineaL = false;  // Saltamos la primera línea (encabezados)
                     continue;
                 }
                 
-                String[] lerroZatiakL = lerroaL.split("\t");
+                String[] lerroZatiakL = lerroaL.split("\t");	// Se separa la informacion con tab(\t) .txt
 
                 String id_eskari = lerroZatiakL[0];     // ID eskari
                 String id_produktu = lerroZatiakL[2];	// Id del producto
                 String cantidadStr = lerroZatiakL[3];	// Cantidad de producto
                 String precioStr = lerroZatiakL[4];  // Dinero por producto
 
-                precioStr = precioStr.replace(",", ".").trim();
+                precioStr = precioStr.replace(",", ".").trim();		// En el caso de que los numeros del .txt tengan "," los reemplazara por "."
                 
-                String id_bezero = idPedidoCliente.get(id_eskari);
+                String id_bezero = idPedidoCliente.get(id_eskari);	// Relaciona el id del cliente con el de la factura
                 
-                if (id_bezero != null && id_bezero.equalsIgnoreCase(InBezeroId)) {
+                if (id_bezero != null && id_bezero.equalsIgnoreCase(InBezeroId)) {	// Si el id del cliente no es nulo y es igual a uno que este en el .txt
                 	try {
-                	    double precio = Double.parseDouble(precioStr);
-                	    double cantidad = Double.parseDouble(cantidadStr);
-                	    double subtotal = precio*cantidad;
+                	    double precio = Double.parseDouble(precioStr);	// Se pasa el precio del .txt a una variable "double"
+                	    double cantidad = Double.parseDouble(cantidadStr);	// Se pasa la cantidad del .txt a una variable "double"
+                	    double subtotal = precio*cantidad;	// Se multiplica cantidad por precio
                 	    
-                	    String subtotalF = df.format(subtotal);
+                	    String subtotalF = df.format(subtotal);		// Se le pasa el formato que emos asignado antes a la variable subtotal
 
-                	    TotalPrecio += subtotal;
+                	    TotalPrecio += subtotal;	// Se suman todos los subtotales
                 	    
-                	    String TotalPrecioF = df.format(TotalPrecio);
+                	    String TotalPrecioF = df.format(TotalPrecio);	// Se pasa la variable TotalPrecio al formato indicado antes para el double
                 	    
-                	    contenido_txt.append("Produktu id-a: ").append(id_produktu)
+                	    contenido_txt.append("Produktu id-a: ").append(id_produktu)		// Guardamos en nuestra variable lo que queremos que se escriba en nuestro .txt
                         			.append("	Prezioa: ").append(precio).append(" EUR")
 			                        .append("	Kantitatea: ").append(cantidad)
-			                        .append("	Subtotala: ").append(subtotalF).append(" EUR\n \n");
+			                        .append("  .................... ").append(subtotalF).append(" EUR\n \n");
                 	    
-                	} catch (NumberFormatException e) {
+                	} catch (NumberFormatException e) {	// Si hay algun error saltara el mensaje
                 	    System.out.println("Error al convertir el precio: " + precioStr);
                 	}
                 	
@@ -251,22 +251,23 @@ public class Bezeroak {
                 }
             }
 
-            brl.close();
+            brl.close();	// Se cierran las funciones para que no haya errores
             frl.close();
             
-            if(encontrado) {
-                ruta = "./BEZEROEN_ESKARIAK/" + InBezeroId + ".Bezero_Eskaria.txt";
-                File archivo = new File(ruta);
+            if(encontrado) {	// Si emos encontrado el id del cliente
+                ruta = "./BEZEROEN_ESKARIAK/" + InBezeroId + ".Bezero_Eskaria.txt";	// Ruta del archivo 
+                File archivo = new File(ruta);	
                 
-                if(!archivo.exists())
+                if(!archivo.exists())	// Si no existe
                 {
-                   archivo.createNewFile();
+                   archivo.createNewFile();	// Se crea el archivo
                 
                 
-                FileWriter fw = new FileWriter(ruta, true);
-                BufferedWriter bw = new BufferedWriter(fw);
-
-                bw.write("Bezeroaren faktura " + InBezeroId + " ID-arekin" + "\n");
+                FileWriter fw = new FileWriter(ruta, true);		// Para escribir en el archivo (se añade la ruta del archivo)
+                BufferedWriter bw = new BufferedWriter(fw);		// Para escribir en el .txt
+               
+            
+                bw.write("Bezeroaren faktura " + InBezeroId + " ID-arekin" + "\n");		// Lo que queremos que salga en el archivo ("\n" es salto de linea)
                 bw.newLine();
                 bw.newLine();
                 bw.write(contenido_txt.toString());  // Escribimos todos los productos
@@ -274,23 +275,26 @@ public class Bezeroak {
                 bw.newLine();
                 bw.newLine();
                 
-                String TotalPrecioF = df.format(TotalPrecio);
-                bw.write("					Ordaintzeko totala: " + TotalPrecioF + " EUR\n");
+                String TotalPrecioF = df.format(TotalPrecio);	// Escribimos el precio total con el formato double creado antes (0,00)
+                bw.write(".............................................................  Ordaintzeko totala: " + TotalPrecioF + " EUR\n");
                 bw.newLine();
-                bw.close();
+                bw.close();	// Se cierra la funcion para que no haya errores
+                
                 System.out.println("Faktura sortu eta fitxategian gorde da.");
                 
-                Desktop dt = Desktop.getDesktop();
-                File file = new File("./BEZEROEN_ESKARIAK/" + InBezeroId + ".Bezero_Eskaria.txt");
-                dt.open(file);
-                }else {
-                	System.out.println("Eskari hau dagoeneko sortuta dago");
+                Desktop dt = Desktop.getDesktop();	// Para que se habra el archivo al crearlo
+                File file = new File("./BEZEROEN_ESKARIAK/" + InBezeroId + ".Bezero_Eskaria.txt");	// La ruta del archivo
+                dt.open(file);	// Comando final para que se habra en tu editor de texto
+                
+                }else {	// Si la factura ya esta creada saltara el mensaje de abajo
+                	System.out.println("Eskari hau dagoeneko sortuta dago");	
                 }
-            }else {
+            
+            }else {		// Si el id del cliente del que has pedido la factura no existe saldra el mensaje de abajo
             	System.out.println("Id hau ez da existitzen edo ez du erosketarik egin.");
             }
             
-        } catch (IOException e) {
+        } catch (IOException e) {	// Si hay algun error saldra este mensaje
             System.out.println("Errorea: Bezero fitxategia irakurtzean arazo bat gertatu da.");
         }
 	}

@@ -158,7 +158,8 @@ public class Bezeroak {
 	
 	public static void FakturaSortu() {		// Funcion para crear una factura de los clientes
         Scanner scanner = new Scanner(System.in);
-		DecimalFormat df = new DecimalFormat("#.##");	// Funcion para indicar el formato de la variable "double"
+        Logo func_logo = new Logo();
+        DecimalFormat df = new DecimalFormat("#.##");	// Funcion para indicar el formato de la variable "double"
         
         System.out.println("Sartu bezero baten id-a: ");
         String InBezeroId = scanner.nextLine();
@@ -166,8 +167,6 @@ public class Bezeroak {
         
         // Creamos un HashMap para asociar IDs de pedidos con sus lineas de pedidos
         HashMap<String, String> idPedidoCliente = new HashMap<>();
-        
-        
         
         try {
             // Leemos primero el archivo de pedidos y lo almacenamos en el HashMap
@@ -266,7 +265,8 @@ public class Bezeroak {
                 
                 FileWriter fw = new FileWriter(ruta, true);		// Para escribir en el archivo (se añade la ruta del archivo)
                 BufferedWriter bw = new BufferedWriter(fw);		// Para escribir en el .txt
-
+               
+            
                 bw.write("Bezeroaren faktura " + InBezeroId + " ID-arekin" + "\n");		// Lo que queremos que salga en el archivo ("\n" es salto de linea)
                 bw.newLine();
                 bw.newLine();
@@ -288,6 +288,9 @@ public class Bezeroak {
                 
                 }else {	// Si la factura ya esta creada saltara el mensaje de abajo
                 	System.out.println("Eskari hau dagoeneko sortuta dago");	
+                    Desktop dt = Desktop.getDesktop();	// Para que se habra el archivo al crearlo
+                    File file = new File("./BEZEROEN_ESKARIAK/" + InBezeroId + ".Bezero_Eskaria.txt");	// La ruta del archivo
+                    dt.open(file);	// Comando final para que se habra en tu editor de texto
                 }
             
             }else {		// Si el id del cliente del que has pedido la factura no existe saldra el mensaje de abajo
