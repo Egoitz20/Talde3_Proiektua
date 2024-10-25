@@ -8,6 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -256,7 +259,16 @@ public class Bezeroak {
             
             if(encontrado) {	// Si emos encontrado el id del cliente
                 ruta = "./BEZEROEN_ESKARIAK/" + InBezeroId + ".Bezero_Eskaria.txt";	// Ruta del archivo 
-                File archivo = new File(ruta);	
+                File archivo = new File(ruta);	// Ruta del archivo
+                Path dirPath = Paths.get("./BEZEROEN_ESKARIAK"); // Ruta de la carpeta
+                
+                boolean resultCarpeta = false;
+                
+                if (Files.notExists(dirPath)) {	// Si no existe la carpeta "BEZEROEN_ESKARIAK" se creará
+                    File directory = new File("./BEZEROEN_ESKARIAK");
+                    resultCarpeta = directory.mkdir();
+                    System.out.println("'BEZEROEN_ESKARIAK' karpeta sortu egin da.");
+                }
                 
                 if(!archivo.exists())	// Si no existe
                 {
