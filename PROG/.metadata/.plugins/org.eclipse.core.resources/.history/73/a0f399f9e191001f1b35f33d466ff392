@@ -1,0 +1,66 @@
+package Funciones;
+
+import java.util.Scanner;
+
+import Kontsultak.Bezeroak;
+import Kontsultak.Kontsulta;
+import Kontsultak.Langileak;
+
+public class MenuP {
+
+	public static void menup() {
+        Logo func_logo = new Logo();
+        Login func_login = new Login();
+        Clear func_clear = new Clear();
+        Scanner scanner = new Scanner(System.in);
+        Kontsulta func_kontsulta = new Kontsulta();
+        Langileak func_langilea = new Langileak();
+        Bezeroak func_bezero = new Bezeroak();
+		
+        boolean login = false;	
+        boolean logout = false;	
+		String menu = "";
+		
+        boolean m_exist = false;
+        
+        while (!menu.equals("4") || !logout) { 
+            func_clear.clear();
+            func_logo.logo();
+            
+            System.out.println("MENU");
+            System.out.println("");
+            System.out.println("1) Langileak");
+            System.out.println("2) Bezeroak");
+            System.out.println("3) Kontsulta");
+            System.out.println("4) Saioa itxi");
+            System.out.println("(1, 2, 3 edo 4)");
+            
+            if(m_exist == true) {
+            	System.out.println();
+            	System.out.println("Ez da existitzen aukera hau sartu beste bat: ");
+            }
+            
+            menu = scanner.nextLine();
+           
+            switch (menu) {
+                case "1":
+                    func_langilea.LangileMenua();
+                    break;
+                case "2":
+                    func_bezero.BezeroMenua();
+                    break;
+                case "3":
+                    func_kontsulta.MenuFitxategiak();
+                    break;
+                case "4":
+                    logout = func_login.logout();
+                    break;
+                default:
+                    m_exist = true;
+                    break;
+            }
+        }
+
+	}
+
+}

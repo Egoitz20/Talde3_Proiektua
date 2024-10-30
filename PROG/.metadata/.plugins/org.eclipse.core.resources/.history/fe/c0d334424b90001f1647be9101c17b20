@@ -1,0 +1,172 @@
+package Kontsultak;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+import Funciones.Clear;
+import Funciones.Logo;
+import Funciones.MenuP;
+
+public class Langileak {
+	public static void LangileMenua() {
+        Clear func_clear = new Clear();
+        Logo func_logo = new Logo();
+        Scanner scanner = new Scanner(System.in);
+        Kontsulta func_kontsulta = new Kontsulta();
+        MenuP func_menup = new MenuP();
+	
+		String menu3 = "";
+        boolean m_exist3 = false;
+
+        while (!menu3.equals("3")) { 
+            func_clear.clear();
+            func_logo.logo();
+            
+            System.out.println("LANGILEEN MENUA");
+            System.out.println("");
+            System.out.println("1) Kontsultatu langile bat");
+            System.out.println("2) Nagusi baten langileen zerrenda");
+            System.out.println("3) Bueltatu");
+            System.out.println("(1, 2 edo 3)");
+            
+            if(m_exist3 == true) {
+            	System.out.println();
+            	System.out.println("Ez da existitzen aukera hau sartu beste bat: ");
+            }
+            
+            menu3 = scanner.nextLine();
+            String letra = "";
+            
+            switch (menu3) {
+                case "1":
+                	letra = "";
+                	Langilea();
+                	
+                	while(!letra.equals("atera")){
+                		System.out.println();
+                    	System.out.println("Sartu 'atera': ");
+                    	letra = scanner.nextLine();
+                    	letra = letra.toLowerCase();
+                	}
+                    break;
+                case "2":
+
+                    break;
+                case "3":
+                	func_menup.menup();
+                default:
+                    m_exist3 = true;
+                    break;
+            }
+        }
+	}
+	
+	public static void Langilea(){
+		Scanner scanner = new Scanner(System.in);
+		
+        System.out.println("Idatzi langilearen izena: ");
+        String InIzena = scanner.nextLine();
+        
+        System.out.println("Idatzi langilearen abizena: ");
+        String InAbizena = scanner.nextLine();
+        
+		boolean langileaAurkitua = false;
+		
+		try {
+            FileReader fr = new FileReader("DB/LANGILE.txt");  // Ruta al archivo de trabajadores
+            BufferedReader br = new BufferedReader(fr);
+            
+            String lerroa;
+            boolean primeraLinea = true;
+
+            // Leer el archivo línea por línea
+            while ((lerroa = br.readLine()) != null) {
+                if (primeraLinea) {
+                    primeraLinea = false;  // Saltamos la primera línea (encabezados)
+                    continue;
+                }
+                
+                String[] lerroZatiak = lerroa.split("\t");
+                
+                String izena = lerroZatiak[1];
+                String abizena = lerroZatiak[2];
+                
+                // Comparamos los nombres y apellidos con los ingresados
+                if (izena.equalsIgnoreCase(InIzena) && abizena.equalsIgnoreCase(InAbizena)) {
+                    // Si coincide, mostramos la información del trabajador
+                    System.out.println("Informazioa aurkitu: " + lerroa);
+                    langileaAurkitua = true;
+                    break;  // Detenemos la búsqueda al encontrar una coincidencia
+                }
+            }
+            
+            if (!langileaAurkitua) {
+                System.out.println("Ez dago pertsona hau gure datu-basean.");
+            }
+                
+            br.close();
+            fr.close();
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("Errorea: Fitxategia ezin da aurkitu.");
+        } catch (IOException e) {
+            System.out.println("Errorea: Fitxategia irakurtzean arazo bat gertatu da.");
+        }
+	}
+	
+	public static void LangileNagusi() {
+Scanner scanner = new Scanner(System.in);
+		
+        System.out.println("Idatzi langilearen izena: ");
+        String InIzena = scanner.nextLine();
+        
+        System.out.println("Idatzi langilearen abizena: ");
+        String InAbizena = scanner.nextLine();
+        
+		boolean langileaAurkitua = false;
+		
+		try {
+            FileReader fr = new FileReader("DB/LANGILE.txt");  // Ruta al archivo de trabajadores
+            BufferedReader br = new BufferedReader(fr);
+            
+            String lerroa;
+            boolean primeraLinea = true;
+
+            // Leer el archivo línea por línea
+            while ((lerroa = br.readLine()) != null) {
+                if (primeraLinea) {
+                    primeraLinea = false;  // Saltamos la primera línea (encabezados)
+                    continue;
+                }
+                
+                String[] lerroZatiak = lerroa.split("\t");
+                
+                String izena = lerroZatiak[1];
+                String abizena = lerroZatiak[2];
+                
+                // Comparamos los nombres y apellidos con los ingresados
+                if (izena.equalsIgnoreCase(InIzena) && abizena.equalsIgnoreCase(InAbizena)) {
+                    // Si coincide, mostramos la información del trabajador
+                    System.out.println("Informazioa aurkitu: " + lerroa);
+                    langileaAurkitua = true;
+                    break;  // Detenemos la búsqueda al encontrar una coincidencia
+                }
+            }
+            
+            if (!langileaAurkitua) {
+                System.out.println("Ez dago pertsona hau gure datu-basean.");
+            }
+                
+            br.close();
+            fr.close();
+            
+        } catch (FileNotFoundException e) {
+            System.out.println("Errorea: Fitxategia ezin da aurkitu.");
+        } catch (IOException e) {
+            System.out.println("Errorea: Fitxategia irakurtzean arazo bat gertatu da.");
+        }
+	}
+}

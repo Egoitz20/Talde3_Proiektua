@@ -1,6 +1,6 @@
 package Funciones;
 
-public class Clear {
+public class Clear {	// Comando para vaciar la pantalla en Cmd de Windows y Shell de Linux
 	public static void clear() {
 		try {
             String sistemaOperativo = System.getProperty("os.name");
