@@ -1,0 +1,73 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Página-1" id="s-i6s91byhifcnwqWUtU">
+    <mxGraphModel dx="2601" dy="827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-1" target="NGdMQY6MfUtfwmmD_sof-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-1" value="Login" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1385" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-2" target="NGdMQY6MfUtfwmmD_sof-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-2" value="IRAKURRI Erabiltzailea&lt;div&gt;IRAKURRI Pasahitza&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-1420" y="140" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-4" target="NGdMQY6MfUtfwmmD_sof-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-4" target="NGdMQY6MfUtfwmmD_sof-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-4" value="Erabiltzailea = Erabiltzailea.ERABILTZAILEAK.txt &amp;amp;&amp;amp;&amp;nbsp;&lt;div&gt;Pasahitza = Pasahitza.ERABILTZAILEAK.txt&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1510" y="240" width="370" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-6" target="NGdMQY6MfUtfwmmD_sof-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1090" y="480" />
+              <mxPoint x="-940" y="480" />
+              <mxPoint x="-940" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-6" value="IDATZI &quot;Erabiltzailea edo pasahitza txarto daude&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-1180" y="400" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-8" value="BAI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-1570" y="270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-10" value="EZ" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-1150" y="270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-13" value="Login = true" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1620" y="400" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-15" target="NGdMQY6MfUtfwmmD_sof-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-15" value="Logout" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-650" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-16" target="NGdMQY6MfUtfwmmD_sof-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-16" value="saiBE != &quot;Bai&quot; &amp;amp;&amp;amp; saiBE != &quot;Ez&quot;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-697.5" y="200" width="215" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="NGdMQY6MfUtfwmmD_sof-19" target="NGdMQY6MfUtfwmmD_sof-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-19" value="IRAKURRI saiBE" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-655" y="140" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NGdMQY6MfUtfwmmD_sof-23" value="IDATZI &quot;Ez da erantzun egokia&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="300" width="170" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
